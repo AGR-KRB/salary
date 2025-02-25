@@ -1,0 +1,49 @@
+﻿<Window x:Class="salary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:salary.MVVM.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:salary"
+        mc:Ignorable="d"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        Title="MainWindow" Height="600" Width="900">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Border Background="AliceBlue"
+                CornerRadius="20" Height="600" VerticalAlignment="Bottom"
+                />
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="228"/>
+                <ColumnDefinition Width="652"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Salary" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Fonts/#Finlandica"  FontSize="40"/>
+
+            <StackPanel Grid.Row="1">
+                <RadioButton Height="50" Width="225" FontSize="18" FontFamily="Fonts/#Finlandica" Content="информация" Style="{StaticResource MenuButtonTheme}" IsChecked="True" Command="{Binding HomeViewCommand}"/>
+                <RadioButton Height="50" Width="225"  FontSize="18" FontFamily="Fonts/#Finlandica" Content="работники" Style="{StaticResource MenuButtonTheme}" Command="{Binding WorkersViewCommand}"/>
+                <RadioButton Height="50" Width="225"  FontSize="18" FontFamily="Fonts/#Finlandica" Content="период" Style="{StaticResource MenuButtonTheme}" Command="{Binding SessonViewCommand}"/>
+                <RadioButton Height="50" Width="225"  FontSize="18" FontFamily="Fonts/#Finlandica" Content="привязка данных" Style="{StaticResource MenuButtonTheme}"  Command="{Binding ReportViewCommand}"/>
+                <RadioButton Height="50" Width="225" FontSize="18" FontFamily="Fonts/#Finlandica" Content="отчет" Style="{StaticResource MenuButtonTheme}"   Command="{Binding ReportViewCommand}"/>
+
+            </StackPanel>
+            <ContentControl Grid.Row="1" Grid.Column="1" Margin="4"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+
+    </Grid>
+</Window>

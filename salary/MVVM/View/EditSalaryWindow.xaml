@@ -1,0 +1,81 @@
+﻿<Window x:Class="salary.MVVM.View.EditSalaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Редактировать данные зарплаты" Height="450" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}">
+
+    <Grid Margin="20,0,20,33">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Оберните StackPanel в ScrollViewer -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="350" Height="368">
+                <TextBox
+                    Text="{Binding Name}"
+                    IsReadOnly="True"
+                    materialDesign:HintAssist.Hint="Имя"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding Position}"
+                    IsReadOnly="True"
+                    materialDesign:HintAssist.Hint="Должность"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding WorkHours, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Отработанные часы"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding HourlyRate, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Часовая оплата"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding Bonus, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Премия"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding Deductions, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Удержания"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding Alimony, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Алименты"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+
+                <TextBox
+                    Text="{Binding SickPay, UpdateSourceTrigger=PropertyChanged}"
+                    materialDesign:HintAssist.Hint="Больничные выплаты"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Margin="0,10"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="ОК" Width="100"
+                    Command="{Binding SaveCommand}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Margin="0,0,10,0"/>
+
+            <Button Content="Отмена" Width="100"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"/>
+        </StackPanel>
+    </Grid>
+</Window>
